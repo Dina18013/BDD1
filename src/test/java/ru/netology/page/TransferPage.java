@@ -9,14 +9,14 @@ import static java.lang.String.valueOf;
 
 public class TransferPage {
 
-        private SelenideElement sumAmount = $("[data-test-id=amount] input");
+        private SelenideElement sum = $("[data-test-id=amount] input");
         private SelenideElement fromAccount = $("[data-test-id=from] input");
-        private SelenideElement clickReplenish = $("[data-test-id=action-transfer]");
+        private SelenideElement clickButton = $("[data-test-id=action-transfer]");
 
         public void transferMoney(int amount, DataHelper.CardsInfo from) {
-            sumAmount.setValue(valueOf(amount));
+            sum.setValue(valueOf(amount));
             fromAccount.setValue(String.valueOf(from));
-            clickReplenish.click();
+            clickButton.click();
             new DashboardPage();
         }
 
