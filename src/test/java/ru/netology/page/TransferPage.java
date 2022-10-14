@@ -1,30 +1,36 @@
 package ru.netology.page;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
-import static java.lang.String.valueOf;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class TransferPage {
 
-        private SelenideElement sum = $("[data-test-id=amount] input");
-        private SelenideElement fromAccount = $("[data-test-id=from] input");
-        private SelenideElement clickButton = $("[data-test-id=action-transfer]");
+    private SelenideElement codeField = $(withText("Пополнение карты"));
+    private SelenideElement amount = $$(".input__control[type=text]").first();
+    private SelenideElement fromCard = $(".input__control[type=tel]");
+    private SelenideElement addButton = $(withText("Пополнить"));
 
-        public void transferMoney(int amount, DataHelper.CardsInfo from) {
-            sum.setValue(valueOf(amount));
-            fromAccount.setValue(String.valueOf(from));
-            clickButton.click();
-            new DashboardPage();
-        }
+    public TransferPage() {
+        codeField.shouldBe(visible);
+    }
 
-        public void errorLimit() {
-            $(".notification__content").should(Condition.exactText("Ошибка"));
-        }
+    public DashboardPage addToFirstCard(Integer transfer) {
+        amount.setValue(transfer.toString());
+        fromCard.setValue(DataHelper.getNumberOfSecondCard());
+        addButton.click();
+        return new DashboardPage();
+    }
 
-        public void invalidCard() {
-            $(".notification__content").should(Condition.text("Ошибка! Произошла ошибка"));
-        }
+    public DashboardPage addToSecondCard(Integer transfer) {
+        amount.setValue(transfer.toString());
+        fromCard.setValue(DataHelper.getNumberOfFirstCard());
+        addButton.click();
+        return new DashboardPage();
+    }
+
 }
