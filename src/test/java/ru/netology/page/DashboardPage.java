@@ -3,6 +3,7 @@ package ru.netology.page;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import lombok.val;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -14,6 +15,7 @@ public class DashboardPage {
     public DashboardPage() {
         heading.shouldBe(visible);
     }
+
     private ElementsCollection cards = $$(".list__item div");
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
@@ -47,4 +49,5 @@ public class DashboardPage {
         addToSecond.click();
         return new TransferPage();
     }
+
 }

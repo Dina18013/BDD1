@@ -6,6 +6,12 @@ public class DataHelper {
 
     private DataHelper() {
     }
+ //   private static final String[] cards = new String[]{"5559 0000 0000 0001", "5559 0000 0000 0002"};
+
+ //   public static String getCard(int index) {
+    //    String card = cards[index];
+      //  return card;
+   // }
 
     @Value
     public static class AuthInfo {
@@ -30,14 +36,25 @@ public class DataHelper {
         return new VerificationCode("12345");
     }
 
-    public static String getNumberOfFirstCard() {
-        String s = "5559000000000001";
-        return s;
-    }
+   // public static String getNumberOfFirstCard() {
+    //   String s = "5559000000000001";
+      // return s;
+   // }
 
-    public static String getNumberOfSecondCard() {
-        String s = "5559000000000002";
-        return s;
-    }
+   // public static String getNumberOfSecondCard() {
+      //  String s = "5559000000000002";
+      //  return s;
+   //}
 
+    @Value
+    public static class CardsInfo {
+        String cardNumber;
+    }
+   public static CardsInfo getFirstCardNumber() {
+       return new CardsInfo("5559000000000001");
+   }
+
+    public static CardsInfo getSecondCardNumber() {
+        return new CardsInfo("5559000000000002");
+    }
 }
