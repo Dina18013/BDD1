@@ -53,7 +53,7 @@ public class TransferTest {
     }
 
     @Test
-    void shouldNotTransferMoneyMoreLimitFromSecondCardToFirst() {
+    void shouldNotTransferMoreLimitFromSecondCardToFirst() {
         open("http://localhost:9999");
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getAuthInfo();
@@ -72,7 +72,7 @@ public class TransferTest {
     }
 
     @Test
-    void shouldNotTransferMoneyMoreLimitFromFirstCardToSecond() {
+    void shouldNotTransferMoneyLimitFromFirstCardToSecond() {
         open("http://localhost:9999");
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getAuthInfo();
