@@ -4,7 +4,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import lombok.val;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -12,13 +11,12 @@ public class DashboardPage {
 
     private SelenideElement heading = $("[data-test-id=dashboard]");
 
-    public DashboardPage() {
-        heading.shouldBe(visible);
-    }
-
     private ElementsCollection cards = $$(".list__item div");
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
+
+    public DashboardPage() {
+    }
 
     public int getFirstCardBalance() {
         val text = cards.first().text();
@@ -37,17 +35,18 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    private SelenideElement addToFirst = $$(".list__item .button__text").first();
-    private SelenideElement addToSecond = $$(".list__item .button__text").last();
+    private static SelenideElement addToFirst = $$(".list__item .button__text").first();
+    private static SelenideElement addToSecond = $$(".list__item .button__text").last();
 
-    public TransferPage addToFirstCard() {
+    public static TransferPage addToFirstCard() {
         addToFirst.click();
         return new TransferPage();
     }
 
-    public TransferPage addToSecondCard() {
+    public static TransferPage addToSecondCard() {
         addToSecond.click();
         return new TransferPage();
     }
-
 }
+
+

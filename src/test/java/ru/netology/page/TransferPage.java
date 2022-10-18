@@ -20,23 +20,9 @@ public class TransferPage {
         codeField.shouldBe(visible);
     }
 
-   // public DashboardPage addToFirstCard(Integer transfer) {
-   //     amount.setValue(transfer.toString());
-     //   fromCard.setValue(DataHelper.getNumberOfSecondCard());
-    //    addButton.click();
-   //     return new DashboardPage();
-   // }
-
-   // public DashboardPage addToSecondCard(Integer transfer) {
-   //     amount.setValue(transfer.toString());
-   //     fromCard.setValue(DataHelper.getNumberOfFirstCard());
-   //     addButton.click();
-   //     return new DashboardPage();
-   // }
-
     public void transferMoney(int amount, DataHelper. CardsInfo from) {
         sumAmount.setValue(valueOf(amount));
-        fromCard.setValue(valueOf(from));
+        fromCard.setValue(String.valueOf(from));
         addButton.click();
         new DashboardPage();
     }
