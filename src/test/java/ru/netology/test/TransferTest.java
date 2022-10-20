@@ -65,10 +65,7 @@ public class TransferTest {
         val balanceSecondCard = dashboardPage.getSecondCardBalance();
         val transferPage = addToFirstCard();
         transferPage.transferMoney(amount, getSecondCardNumber());
-        val expectBalanceFirstCard = balanceFirstCard + amount;
-        val expectBalanceSecondCard = balanceSecondCard - amount;
-        assertEquals(expectBalanceFirstCard, dashboardPage.getFirstCardBalance());
-        assertEquals(expectBalanceSecondCard, dashboardPage.getSecondCardBalance());
+        transferPage.errorLimit();
     }
 
     @Test
@@ -84,10 +81,7 @@ public class TransferTest {
         val balanceSecondCard = dashboardPage.getSecondCardBalance();
         val transferPage = addToSecondCard();
         transferPage.transferMoney(amount, getFirstCardNumber());
-        val expectBalanceFirstCard = balanceFirstCard - amount;
-        val expectBalanceSecondCard = balanceSecondCard + amount;
-        assertEquals(expectBalanceFirstCard, dashboardPage.getFirstCardBalance());
-        assertEquals(expectBalanceSecondCard, dashboardPage.getSecondCardBalance());
+        transferPage.errorLimit();
     }
 }
 

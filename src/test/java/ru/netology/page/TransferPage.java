@@ -1,5 +1,6 @@
 package ru.netology.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
 
@@ -24,6 +25,10 @@ public class TransferPage {
         sumAmount.setValue(valueOf(amount));
         fromCard.setValue(String.valueOf(from));
         addButton.click();
-        new DashboardPage();
+    }
+
+    public void errorLimit() {
+        $(".notification_content").should(Condition.exactText("Щшибка"));
+
     }
 }
