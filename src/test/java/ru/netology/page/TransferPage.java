@@ -28,7 +28,7 @@ public class TransferPage {
     }
 
     public void errorLimit() {
-        $(".notification_content").should(Condition.exactText("Щшибка"));
+        $(".notification_content").should(Condition.exactText("Ошибка"));
 
     }
 }
